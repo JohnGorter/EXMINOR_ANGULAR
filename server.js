@@ -1,12 +1,19 @@
-var http = require('http');
-var fs = require('fs');
-var exec = require('child_process').exec, child;
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
-child = exec('notepad');
+app.get('/', function(req, res){
+  res.sendfile('index.html');
+});
 
-console.log('we are watching the files in nodehw');
-fs.watchFile ('john.txt', function(event, file){
-  console.log('aahaa  iemand zit aan onze bestandjes');
-}); 
+io.on('connection', function(socket){
+  console.log("connection created")
+  socket.on('chat message', function(msg){
+    console.log("message arrived")
+    io.emit('chat message', msg);
+  });
+});
 
-console.log('press crtl+c to exit this application');
+http.listen(80, function(){
+  console.log('listening on *:80');
+});
