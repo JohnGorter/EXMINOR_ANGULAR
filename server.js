@@ -17,6 +17,20 @@ app.get('/', function(req, res){
   res.sendfile('index.html'); 
 });
   
+app.get('/main.js', function(req, res){
+ res.sendfile('main.js');
+});
+  
+app.get('/main.html', function(req, res){
+ res.sendfile('main.html');
+});
+
+app.get('/history.html', function(req, res){
+ res.sendfile('history.html');
+});
+
+
+
 app.get('/conversations.html', function(req, res){
  res.sendfile('conversations.html');
 });

@@ -1,0 +1,7 @@
+ <h1>Chat history</h1>
+    <ul ng-repeat="c in convs" id="messages">
+         <li>{{c.user}} said at {{c.time | date:"dd-MM-yyyy HH:mm"}} : {{c.message}} <button ng-click="delete($index)">delete</button></li>
+    </ul>
+    
+    <a href="/">Back to the chat..</a>
+    <a href="#/">Clear all data..</a>

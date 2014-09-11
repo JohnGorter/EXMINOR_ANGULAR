@@ -1,9 +1,14 @@
 <!doctype html>
-<html>
+<html ng-app="john">
   <head>
-    <title>Socket.IO chat</title>
+    <title>Angular Chat App</title>
      <script src="/socket.io/socket.io.js"></script>
      <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.min.js"></script>
+     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-route.min.js"></script>
+     <script src="main.js"></script>
+
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
@@ -15,33 +20,8 @@
       #messages li:nth-child(odd) { background: #eee; }
     </style>
   </head>
-  
- 
-<script>
-    $(function(){
-        var socket = io();
-        $('form').submit(function(){
-          socket.emit('chat message', { time:new Date(), user: $('#u').val(), message: $('#m').val()} );
-          $('#m').val('');
-          $("#m").focus();
-          return false;
-        });
-        socket.on('chat message', function(msg){ 
-          $('#messages').append($('<li>').text('[' + msg.time + '] ' + msg.user + " says: " + msg.message));
-        });
-        
-        $("#u").change(function(){
-            $(this).css('background-color','yellow').attr("disabled", "disabled");
-            });
-  });
-</script>
 
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      user: <input id="u" autocomplete="off" required />
-      message: <input id="m" autocomplete="off" /><button>Send</button>
-      <a href="/conversations">Show a history of messages</a>
-    </form>
+
+  <body ng-view="">
   </body>
 </html>

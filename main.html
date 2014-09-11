@@ -1,0 +1,8 @@
+    <ul id="messages" ng-repeat="msg in messages">
+      <li>{{ msg.user }}: {{msg.message}}</li>
+    </ul>
+    <form action="" ng-submit="sendMessage()">
+      user: <input id="u" ng-model="message.user" autocomplete="off" required />
+      message: <input id="m" ng-model="message.message" autocomplete="off" /><button>Send</button>
+      <a href="#/history">Show a history of messages</a>
+    </form>
