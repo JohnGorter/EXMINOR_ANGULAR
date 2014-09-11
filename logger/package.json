@@ -1,0 +1,11 @@
+{
+  "name": "jglogger",
+  "version": "0.0.2",
+  "description": "Logs stuff to the console and database and so on...",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "John Gorter",
+  "license": "ISC"
+}
